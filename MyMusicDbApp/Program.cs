@@ -1,16 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using MyMusicDbData.Models; 
+using MyMusicDbServices; 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddDbContext<MyMusicDbContext>(
-        options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("MyMusicDbConnection")));
-
 builder.Services.AddControllersWithViews();
+//Use the IServiceCollectionExtension to extend Services with a custom method 'ConfigureServices'
+builder.Services.ConfigureServices(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

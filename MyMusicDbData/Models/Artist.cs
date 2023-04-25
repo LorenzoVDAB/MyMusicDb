@@ -1,9 +1,7 @@
-﻿namespace MyMusicDbData.Models {
-    public class Artist {
-        public int Id { get; set; } 
-        public string Name { get; set; }
+﻿namespace MyMusicDbData.Models;
 
-        public ICollection<Album> Albums { get; set; } 
-        public ICollection<Track> Singles { get; set; } 
-    }
+public class Artist : Entity {
+    public string? Name { get; set; }
+    public ICollection<Album>? Albums { get; set; } 
+    public ICollection<Track>? Singles { get; set; } 
 }
