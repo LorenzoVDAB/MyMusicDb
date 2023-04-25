@@ -12,8 +12,9 @@ namespace MyMusicDbData.Models {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             configuration = new ConfigurationBuilder()
-                        .SetBasePath(Directory.GetParent(AppContext.BaseDirectory)?.FullName)
-                        .AddJsonFile("appsettings.json", false).Build();
+                        .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../MyMusicDbApp"))
+                        .AddJsonFile("appsettings.json", false)
+                        .Build();
         }
     }
 }
