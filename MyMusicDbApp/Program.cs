@@ -2,7 +2,8 @@ using MyMusicDbServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to project 
+builder.Services.AddScoped<ArtistsService>();
 
 builder.Services.AddControllersWithViews();
 //Use the IServiceCollectionExtension to extend Services with a custom method 'ConfigureServices'

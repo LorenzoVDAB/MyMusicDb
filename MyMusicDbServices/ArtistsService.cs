@@ -1,12 +1,12 @@
 ﻿using MyMusicDbData.Models;
-using MyMusicDbData.Repositories.SQL; 
+using MyMusicDbData.Repositories.Interfaces; 
 
 namespace MyMusicDbServices; 
 
 public class ArtistsService {
-    private readonly SQLArtistsRepository repository; 
+    private readonly IArtistsRepository repository; 
 
-    public ArtistsService(SQLArtistsRepository repository) {
+    public ArtistsService(IArtistsRepository repository) {
         this.repository = repository;
     }
 
