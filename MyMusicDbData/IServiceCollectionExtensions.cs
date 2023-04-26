@@ -13,5 +13,6 @@ public static class IServiceCollectionExtensions {
         var connectionString = configuration.GetConnectionString("MyMusicDbConnection");
         services.AddDbContext<MyMusicDbContext>(options => options.UseSqlServer(connectionString));
         services.AddScoped<IArtistsRepository, SQLArtistsRepository>(); 
+        services.AddScoped<ITracksRepository, SQLTracksRepository>(); 
     }
 }

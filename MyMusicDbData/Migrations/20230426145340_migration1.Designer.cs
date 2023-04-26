@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMusicDbData.Models;
 
@@ -11,9 +12,11 @@ using MyMusicDbData.Models;
 namespace MyMusicDbData.Migrations
 {
     [DbContext(typeof(MyMusicDbContext))]
-    partial class MyMusicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230426145340_migration1")]
+    partial class migration1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,7 +82,7 @@ namespace MyMusicDbData.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ReleaseDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .HasMaxLength(50)
@@ -105,10 +108,9 @@ namespace MyMusicDbData.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -132,7 +134,7 @@ namespace MyMusicDbData.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("StartDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -154,7 +156,7 @@ namespace MyMusicDbData.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ReleaseDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()

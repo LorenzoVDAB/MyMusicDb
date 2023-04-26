@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to project 
 builder.Services.AddScoped<ArtistsService>();
+builder.Services.AddScoped<TracksService>(); 
 
 builder.Services.AddControllersWithViews();
 //Use the IServiceCollectionExtension to extend Services with a custom method 'ConfigureServices'
@@ -27,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Artists}/{action=Index}");
 
 app.Run();

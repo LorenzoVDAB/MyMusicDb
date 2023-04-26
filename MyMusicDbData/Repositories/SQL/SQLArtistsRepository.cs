@@ -14,7 +14,7 @@ public class SQLArtistsRepository : IArtistsRepository {
 
     public async Task<Artist> AddAsync(Artist artist) {
         context.Artists.Add(artist);
-        await SaveAsync();
+        await context.SaveChangesAsync();
         return artist; 
     }
 
@@ -22,12 +22,12 @@ public class SQLArtistsRepository : IArtistsRepository {
         Artist? artist = await context.Artists.FindAsync(id);
         if (artist != null) {
             context.Artists.Remove(artist);
-            await SaveAsync();
+            await context.SaveChangesAsync();
         }
     }
 
     //Using pagination in case the database gets big 
-    public async Task<IEnumerable<Artist>> GetAllAsync(int page, int pageSize) {
+    public async Task<List<Artist>> GetAllAsync(int page, int pageSize) {
         return await context.Artists
             .OrderBy(a => a.Id)
             .Skip(page * pageSize)
@@ -37,10 +37,6 @@ public class SQLArtistsRepository : IArtistsRepository {
 
     public async Task<Artist?> GetByIdAsync(int id) {
         return await context.Artists.FindAsync(id); 
-    }
-
-    public async Task SaveAsync() {
-        await context.SaveChangesAsync(); 
     }
 
     public async Task<Artist> UpdateAsync(Artist artist) {

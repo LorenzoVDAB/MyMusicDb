@@ -1,0 +1,7 @@
+﻿@model MyMusicDbApp.Models.ArtistViewModel;
+
+<h1>Would you like to delete ID @Model.Id : @Model.Name?</h1>
+<form asp-action="Destroy" asp-route-id="@Model.Id">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <button asp-action="Index" class="btn btn-primary">Go back</button>
+</form>

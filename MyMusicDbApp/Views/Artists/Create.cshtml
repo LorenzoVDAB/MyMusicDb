@@ -1,0 +1,52 @@
+﻿@model MyMusicDbApp.Models.ArtistCreateViewModel; 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+@{
+    ViewData["Title"] = "Add a new artist"; 
+}
+
+<h1>Add an artist to the MyMusicDb Database</h1>
+
+<form asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-md">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth"></label>
+                <input asp-for="DateOfBirth" id="DateOfBirthInput" />
+                <input asp-for="DateOfBirthKnown" id="DateOfBirthKnown" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Create</button>
+                <button asp-action="Index" class="btn btn-primary">Go back</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            //Hide the datepicker if the DateOfBirthUnkown is checked
+            $('#DateOfBirthInput').hide(); 
+
+            $('#DateOfBirthKnown').change(
+                function () {
+                    if ($(this).is(':checked')) { 
+                        $('#DateOfBirthInput').show();
+                    } else {
+                        $('#DateOfBirthInput').hide();
+                    }
+                }
+            );
+        });
+    </script>
+}

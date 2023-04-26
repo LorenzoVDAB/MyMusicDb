@@ -1,0 +1,46 @@
+﻿@model List<ArtistViewModel>
+
+<h1>Artists</h1>
+
+@if (Model == null || Model.Count == 0) {
+    <p>There are currently no artists available.</p>
+} else {
+    <table class="table">
+        <thead>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Country Of Origin</td>
+            <td>Date Of Birth</td>
+            <td></td>
+        </thead>
+        <tbody>
+            @foreach (ArtistViewModel artist in Model) {
+                <tr>
+                    <td> @artist.Id </td>
+                    <td>
+                        @if (artist.Name != null) { 
+                             <a asp-action="Edit" asp-route-id="@artist.Id">@artist.Name</a> 
+                        }
+                    </td>
+                    <td>
+                        @if (artist.Country != null) {
+                            @artist.Country
+                        }
+                    </td>
+                    <td>
+                        @if (artist.DateOfBirth != null){
+                            @artist.DateOfBirth?.ToString("dd/MM/yyyy")
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id=@artist.Id>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="Create"> Add New Artist </a>
+</p>
