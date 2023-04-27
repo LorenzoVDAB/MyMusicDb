@@ -104,7 +104,7 @@ public class ArtistsController : Controller {
     [HttpPost]
     public async Task<IActionResult> Update(ArtistEditViewModel viewmodel) {
         if (!ModelState.IsValid) {
-            return RedirectToAction(nameof(Edit), new { id = viewmodel.Id });
+            return View(nameof(Edit), viewmodel);
         }
 
         ArtistDTO? artistDTO = await artistsService.GetByIdAsync(viewmodel.Id); 
